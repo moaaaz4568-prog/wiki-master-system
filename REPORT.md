@@ -88,14 +88,14 @@ wc -l PROMPT.md STRUCTURE.md DECISIONS.md skills/*/SKILL.md
 | صياغة أوامر السكيلز | **PASS — OBSERVED:** 77 كتلة Bash و36 كتلة Python، صفر أخطاء صياغة | `bash -n` و`ast.parse()`؛ أُعيد الفحص بعد التعديلين |
 | توازن code fences | **PASS — OBSERVED:** كل الملفات زوجية الأسوار | عدّ الأسطر التي تبدأ بـ``` |
 | عقد أقسام المفهوم | **PASS — OBSERVED:** العناوين الثمانية H2 موجودة وبالترتيب في `STRUCTURE.md` وسكيلي البناء والتعميق | مقارنة التسلسل النصي بـPython |
-| بوابات الماستر | **PASS — OBSERVED:** §1–§18 وT←baseline←M0 موثقة، وأصبح فاحص القبول يفرض baseline المكتمل | مراجعة نصية + فحص وجود شروط `baseline_run_id` و`status: completed` |
+| بوابات الماستر | **PASS — OBSERVED:** §1–§18 وبوابة النطاق←baseline←M0 موثقة، وأصبح فاحص القبول يفرض baseline المكتمل | مراجعة نصية + فحص وجود شروط `baseline_run_id` و`status: completed` |
 | حد المجلدات | **PASS — OBSERVED:** لم يتجاوز أي مجلد 1,000 ملف مباشر؛ أكثر مجلدات السكيلز يحوي ملفاً واحداً | عدّ `iterdir()` للملفات المباشرة بـPython؛ الجذر النهائي: __ROOT_DIRECT_FILES__ ملفات |
 | `SYSTEM.html` | **__HTML_VALIDATION__** | فحص HTML محلي وقراءة الناتج بعد البناء |
 
 ### 5.2 إصلاحان أضيفا في التحقق النهائي
 
 1. **OBSERVED — تضييق فاحص metadata:** كان `wiki-asking` §23E يفحص كل Markdown داخل `03_CONCEPTS` و`04_MASTERS`، فيرفض بطاقة `G_` ذات الحقول الأربعة والتقارير الجانبية رغم أنها ليست كيانات إجابة مفهرسة. قُصر الفحص الآن على `S_*.md` و`CLM_*.md` و`C_*.md` و`M_*.md` في مساراتها، مع توضيح سبب استبعاد `G_` و`X_` والتقارير من هذا الفاحص المخصص.
-2. **OBSERVED — إغلاق ثغرة baseline:** كان فاحص إنشاء `M_` يطلب T وM0 دون إثبات baseline مكتمل. أصبح يطلب `baseline.md` بحالة `completed`، ومطابقة `snapshot_id` و`snapshot_hash`، وربط `M0.baseline_run_id` بـ`baseline.run_id`. يمنع ذلك قبول ماستر مسودة بلا المقارنة السابقة التي يفرضها العقد.
+2. **OBSERVED — إغلاق ثغرة baseline:** كان فاحص إنشاء `M_` يطلب بوابة النطاق وM0 دون إثبات baseline مكتمل. أصبح يطلب `baseline.md` بحالة `completed`، ومطابقة `snapshot_id` و`snapshot_hash`، وربط `M0.baseline_run_id` بـ`baseline.run_id`. يمنع ذلك قبول ماستر مسودة بلا المقارنة السابقة التي يفرضها العقد.
 
 لم تُغيّر هذه الإصلاحات بنية النظام أو قراراته؛ هي مواءمة بين أوامر القبول والعقود الموجودة.
 
@@ -110,7 +110,7 @@ wc -l PROMPT.md STRUCTURE.md DECISIONS.md skills/*/SKILL.md
 | `skills/wiki-structure/SKILL.md` | 553 | التهيئة والعقود والفهارس وlint |
 | `skills/wiki-concept-building/SKILL.md` | 722 | الاستيعاب والقراءة وClaims والمفاهيم والمسرد الاختياري |
 | `skills/wiki-concept-deepening/SKILL.md` | 667 | الخطوات السبع وD05/D06 وK0–K5 والمراجعة المستقلة |
-| `skills/wiki-master-making/SKILL.md` | 813 | T وbaseline وM0–M6 و§1–§18 والتغطية والتقييم |
+| `skills/wiki-master-making/SKILL.md` | 813 | بوابة النطاق وbaseline وM0–M6 و§1–§18 والتغطية والتقييم |
 | `skills/wiki-asking/SKILL.md` | 792 | العزل والاسترجاع والاستشهاد والامتناع والتقييم |
 | `REPORT.md` | __REPORT_LINES__ | هذا التقرير ومنهجية التحقق والقيود |
 | `SYSTEM.html` | __SYSTEM_LINES__ | شرح عربي RTL مستقل للنظام كاملاً |

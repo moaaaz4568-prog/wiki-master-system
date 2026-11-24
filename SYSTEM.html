@@ -31,7 +31,7 @@
 <div class="step"><span class="num">2</span><b>استخراج الادعاء</b><small>S_ / CLM_ + locator</small></div>
 <div class="step"><span class="num">3</span><b>بناء المفهوم</b><small>C_ ومسرد G_ اختياري</small></div>
 <div class="step"><span class="num">4</span><b>التعميق</b><small>7 خطوات · K0–K5</small></div>
-<div class="step"><span class="num">5</span><b>تعريف المهمة</b><small>T + baseline مكتمل</small></div>
+<div class="step"><span class="num">5</span><b>تعريف المهمة</b><small>بوابة النطاق + baseline مكتمل</small></div>
 <div class="step"><span class="num">6</span><b>صناعة الماستر</b><small>M0–M6 · §1–§18</small></div>
 <div class="step"><span class="num">7</span><b>الفهرسة والاسترجاع</b><small>metadata · retrieval · rerank</small></div>
 <div class="step"><span class="num">8</span><b>السؤال والجواب</b><small>استشهاد أو امتناع مبرر</small></div>
@@ -58,7 +58,7 @@
 ├── 01_DATASETS/      # مصادر غير معدلة + snapshots وبصمات
 ├── 02_CLAIMS/        # S_ وCLM_: ادعاءات، مواضع، اقتباسات، خلافات
 ├── 03_CONCEPTS/      # C_: مفاهيم؛ G_: مسرد اختياري؛ X_: تقارير جانبية
-├── 04_MASTERS/       # T، baseline، M0–M6، M_، روابط التغطية
+├── 04_MASTERS/       # بوابة النطاق، baseline، M0–M6، M_، روابط التغطية
 ├── 05_EVAL/          # eval_set ونتائج الاختبارات والمقارنات
 ├── 06_INDEXES/       # collections وفهارس الاسترجاع المشتقة
 └── 07_REPORTS/       # lint ومراجعة وحالة وتدقيق</pre>
@@ -91,10 +91,10 @@
 <article class="card"><h3>1. wiki-structure</h3><p><b>553 سطراً.</b> التهيئة والعقود والفهارس وlint؛ يبني الهيكل الذي تمر عبره بقية المراحل.</p></article>
 <article class="card"><h3>2. wiki-concept-building</h3><p><b>722 سطراً.</b> الاستيعاب والقراءة وClaims والمفاهيم، مع المسرد الاختياري داخله لا كسكيل مستقل.</p></article>
 <article class="card"><h3>3. wiki-concept-deepening</h3><p><b>667 سطراً.</b> الخطوات السبع وD05/D06 وK0–K5 والمراجعة المستقلة للمفهوم.</p></article>
-<article class="card"><h3>4. wiki-master-making</h3><p><b>813 سطراً.</b> T وbaseline وM0–M6 و§1–§18 والتغطية والتقييم وبوابات الاعتماد.</p></article>
+<article class="card"><h3>4. wiki-master-making</h3><p><b>813 سطراً.</b> بوابة النطاق وbaseline وM0–M6 و§1–§18 والتغطية والتقييم وبوابات الاعتماد.</p></article>
 <article class="card"><h3>5. wiki-asking</h3><p><b>792 سطراً.</b> العزل والاسترجاع والاستشهاد والامتناع والتقييم؛ آخر حلقة وأكثرها انضباطاً.</p></article>
 </div>
-<div class="note"><b>إغلاق ثغرة baseline:</b> لا يكفي وجود T وM0. فاحص إنشاء <code>M_</code> يشترط <code>baseline.md</code> بحالة <code>completed</code>، ومطابقة <code>snapshot_id</code> و<code>snapshot_hash</code>، وربط <code>M0.baseline_run_id</code> بـ<code>baseline.run_id</code>. بذلك لا تُقبل مسودة ماستر بلا المقارنة السابقة التي يفرضها العقد.</div>
+<div class="note"><b>إغلاق ثغرة baseline:</b> لا يكفي وجود بوابة النطاق وM0. فاحص إنشاء <code>M_</code> يشترط <code>baseline.md</code> بحالة <code>completed</code>، ومطابقة <code>snapshot_id</code> و<code>snapshot_hash</code>، وربط <code>M0.baseline_run_id</code> بـ<code>baseline.run_id</code>. بذلك لا تُقبل مسودة ماستر بلا المقارنة السابقة التي يفرضها العقد.</div>
 </section>
 <section id="decisions">
 <h2>14 قراراً محسوماً — ولماذا؟</h2>
@@ -112,7 +112,7 @@
 <article class="card"><h3>10. الاسترجاع هجين ومقيد</h3><p><b>لماذا:</b> BM25 وdense وHyDE وrerank وRRF مسارات تكميلية، مع metadata وsnapshot لضبط النطاق.</p></article>
 <article class="card"><h3>11. التقييم على لقطة واحدة</h3><p><b>لماذا:</b> مقارنة baseline وM5 على snapshot نفسها تمنع نسبة الفرق إلى تغير البيانات.</p></article>
 <article class="card"><h3>12. baseline شرط لا زينة</h3><p><b>لماذا:</b> اكتماله ومطابقة البصمات وربطه بـM0 يمنعان قبول ماستر بلا مرجع مقارنة.</p></article>
-<article class="card"><h3>13. الاعتماد له بوابات</h3><p><b>لماذا:</b> §1–§18 وT←baseline←M0 والتغطية والمراجعة المستقلة تفصل المسودة عن reviewed/canonical.</p></article>
+<article class="card"><h3>13. الاعتماد له بوابات</h3><p><b>لماذا:</b> §1–§18 وبوابة النطاق←baseline←M0 والتغطية والمراجعة المستقلة تفصل المسودة عن reviewed/canonical.</p></article>
 <article class="card"><h3>14. الادعاءات مقنّعة بحالتها</h3><p><b>لماذا:</b> OBSERVED وREPORTED وPROPOSED وUNKNOWN وNOT_RUN تمنع تحويل التصميم إلى نتائج مزعومة.</p></article>
 </div>
 </section>
@@ -121,7 +121,7 @@
 <div class="grid">
 <article class="card"><h3>سلسلة الدليل</h3><p>من استخراج الادعاءات والمصادر إلى المفهوم والتعميق والماستر، مع إبقاء locator والاقتباس والبصمة في قلب السلسلة.</p></article>
 <article class="card"><h3>التعميق المنهجي</h3><p>أُخذت عقود أقسام المفهوم، والخطوات السبع وD05/D06 وK0–K5، مع مراجعة مستقلة بدل المراجعة الذاتية فقط.</p></article>
-<article class="card"><h3>بوابة الماستر</h3><p>أُخذ T وbaseline وM0–M6 و§1–§18 وربط التغطية والتقييم، ثم شدّد الفاحص ليطالب baseline مكتملاً ومتطابق اللقطة.</p></article>
+<article class="card"><h3>بوابة الماستر</h3><p>أُخذ بوابة النطاق وbaseline وM0–M6 و§1–§18 وربط التغطية والتقييم، ثم شدّد الفاحص ليطالب baseline مكتملاً ومتطابق اللقطة.</p></article>
 <article class="card"><h3>صياغة الحالات</h3><p>الأرقام المنقولة من الإرث REPORTED وليست benchmark جديداً، والغائب UNKNOWN أو NOT_RUN بدل تخمين نتيجته.</p></article>
 <article class="card"><h3>مراجع انتقائية</h3><p>استُخدمت وثائق محددة من V2 وV3 وC2 كمراجع تاريخية أو لحسم توترات؛ لم تُتخذ منظومات حاكمة كاملة.</p></article>
 <article class="card"><h3>عينات بحدود</h3><p><code>G_value_pricing.md</code> عينة شكل فقط، لا أساساً لـbiz-media. أما مصدر luna-test الداخلي المفقود فبقي UNKNOWN.</p></article>

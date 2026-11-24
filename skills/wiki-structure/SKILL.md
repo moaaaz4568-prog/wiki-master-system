@@ -144,7 +144,7 @@ test "$count" -le 1000
 | مفهوم | `C_<SOURCE_CODE>_NN.md` | فكرة واحدة، NN من 01 |
 | مسرد | `G_<concept_slug>.md` | اختياري |
 | خلاف | `X_<conflict_id>.md` | يحفظ الطرفين |
-| ماستر | `M_<master_id>.md` | بعد T وM0 فقط |
+| ماستر | `M_<master_id>.md` | بعد بوابة النطاق وM0 فقط |
 | قراءة | `READ_<source_id>.json` | تغطية segments |
 | مراجعة | `REV_<unit_id>_<date>.md` | مراجع مستقل |
 
@@ -299,7 +299,7 @@ Append-only:
 | البوابة | المعنى | حاجب ماذا؟ |
 |---|---|---|
 | R | هوية المصدر ونسخته وقراءته | الاستخراج المعتمد |
-| T | `scope_concepts_complete` على snapshot | إنشاء M_ |
+| بوابة النطاق (T) | `scope_concepts_complete` على snapshot | إنشاء M_ |
 | C | Claims والاقتباسات والمواضع | المفهوم reviewed |
 | K0–K5 | العمق والفصل والقارئ والحالة | تعميق معتمد |
 | M0–M6 | الحاجة والكتاب والاسترجاع والقرار | reviewed/canonical |
