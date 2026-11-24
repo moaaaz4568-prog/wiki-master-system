@@ -14,13 +14,13 @@
 <header class="hero">
 <div class="eyebrow">SYSTEM MAP · 24 NOV 2026</div>
 <h1>نظام ويكي الماسترز</h1>
-<p class="lead">معمارية مقترحة تحوّل المصادر إلى ادعاءات قابلة للفحص، ثم مفاهيم عميقة، ثم كتب قرار «Masters»، ثم إجابات مسترجعة باستشهادات وحدود واضحة. قيمة النظام ليست في كثرة النص، بل في إمكان تتبّع كل نتيجة إلى دليلها وسياقها ونسختها.</p>
+<p class="lead">معمارية مقترحة تحوّل المصادر إلى مفاهيم عميقة تحمل سجلات أدلة قابلة للفحص، ثم كتب قرار «Masters»، ثم إجابات مسترجعة باستشهادات وحدود واضحة. قيمة النظام ليست في كثرة النص، بل في إمكان تتبّع كل نتيجة إلى دليلها وسياقها ونسختها.</p>
 <div class="badges"><span class="badge">8 طبقات</span><span class="badge">5 سكيلز</span><span class="badge warn">PROPOSED — تصميم قابل للتنفيذ</span><span class="badge stop">NOT_RUN — لا نتائج RAG</span></div>
 <nav aria-label="فهرس الصفحة"><a href="#lifecycle">دورة الحياة</a><a href="#structure">المجلدات والطبقات</a><a href="#personas">الشخصيات وRAG</a><a href="#skills">السكيلز</a><a href="#decisions">القرارات الـ14</a><a href="#inheritance">الإرث والاستبعاد</a></nav>
 </header>
 <section id="intro">
 <h2>الفكرة الحاكمة: المعرفة عقدٌ لا كومة ملفات</h2>
-<div class="grid"><article class="card"><h3>الدليل قبل البلاغة</h3><p>تبدأ الكتابة من مصدر محدد وبصمة وموضع قابل للمراجعة؛ الادعاء وحدة مستقلة، والخلاف يُحفظ ولا يُخفى.</p></article><article class="card"><h3>الوظيفة قبل الحجم</h3><p>لا تمنح أعداد الكلمات أو النسب العامة عمقاً تلقائياً. العمق يقاس بالقرار الذي يخدمه المحتوى وتغطيته ودليله.</p></article><article class="card"><h3>البوابة قبل الترقية</h3><p>لا يصبح الماستر reviewed أو canonical بالانطباع؛ يلزم نطاق وحاجة وbaseline وتغطية ومراجعة مستقلة وموافقة مالك.</p></article></div>
+<div class="grid"><article class="card"><h3>الدليل قبل البلاغة</h3><p>تبدأ الكتابة من مصدر محدد وبصمة وموضع قابل للمراجعة؛ الدليل سجل داخل المفهوم، والخلاف يُحفظ ولا يُخفى.</p></article><article class="card"><h3>الوظيفة قبل الحجم</h3><p>لا تمنح أعداد الكلمات أو النسب العامة عمقاً تلقائياً. العمق يقاس بالقرار الذي يخدمه المحتوى وتغطيته ودليله.</p></article><article class="card"><h3>البوابة قبل الترقية</h3><p>لا يصبح الماستر reviewed أو canonical بالانطباع؛ يلزم نطاق وحاجة وbaseline وتغطية ومراجعة مستقلة وموافقة مالك.</p></article></div>
 <div class="note warning"><b>حدود هذه الصفحة:</b> ما يأتي شرح لاتساق التصميم، لا شهادة بناء معرفة أو اعتماد ماستر. لم تُنشأ datasets، ولم تُثبّت فهارس qmd، ولم تُقس Recall@k أو MRR أو جودة الاستشهاد والامتناع.</div>
 </section>
 <section id="lifecycle">
@@ -28,8 +28,8 @@
 <p>كل انتقال يضيف عقداً أو فحصاً؛ لا قفز من المقتطفات إلى الجواب، ولا من مسودة ماستر إلى canonical.</p>
 <div class="flow" aria-label="مراحل دورة حياة المعرفة">
 <div class="step"><span class="num">1</span><b>تثبيت المصدر</b><small>dataset · snapshot · hash</small></div>
-<div class="step"><span class="num">2</span><b>استخراج الادعاء</b><small>S_ / CLM_ + locator</small></div>
-<div class="step"><span class="num">3</span><b>بناء المفهوم</b><small>C_ ومسرد G_ اختياري</small></div>
+<div class="step"><span class="num">2</span><b>تسجيل الدليل</b><small>S_ + اقتباس وموضع وبصمة</small></div>
+<div class="step"><span class="num">3</span><b>بناء المفهوم</b><small>C_ + سجل الأدلة</small></div>
 <div class="step"><span class="num">4</span><b>التعميق</b><small>7 خطوات · K0–K5</small></div>
 <div class="step"><span class="num">5</span><b>تعريف المهمة</b><small>بوابة النطاق + baseline مكتمل</small></div>
 <div class="step"><span class="num">6</span><b>صناعة الماستر</b><small>M0–M6 · §1–§18</small></div>
@@ -38,12 +38,12 @@
 </div>
 <div class="diagram">
 <svg viewBox="0 0 1000 190" role="img" aria-labelledby="svgTitle svgDesc" xmlns="http://www.w3.org/2000/svg">
-<title id="svgTitle">خط الدليل والحوكمة</title><desc id="svgDesc">المصدر يغذي الادعاء ثم المفهوم ثم الماستر ثم الإجابة، بينما تحيط به لقطات وبصمات ومراجعات وبوابات.</desc>
+<title id="svgTitle">خط الدليل والحوكمة</title><desc id="svgDesc">المصدر يغذي سجل الأدلة داخل المفهوم ثم الماستر ثم الإجابة، بينما تحيط به لقطات وبصمات ومراجعات وبوابات.</desc>
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M8 0L0 4L8 8" fill="none" stroke="#2368a2" stroke-width="1.5"/></marker></defs>
 <path d="M890 80H110" stroke="#2368a2" stroke-width="3" marker-end="url(#arrow)"/>
 <g font-family="Tahoma,Arial" font-size="18" text-anchor="middle" fill="#172033">
 <g><rect x="810" y="42" width="160" height="76" rx="16" fill="#e8f5ef" stroke="#77aa95"/><text x="890" y="76">المصدر واللقطة</text><text x="890" y="101" font-size="13">أصل لا يُعدّل</text></g>
-<g><rect x="610" y="42" width="150" height="76" rx="16" fill="#eef5fb" stroke="#8cadc9"/><text x="685" y="76">الادعاء والمفهوم</text><text x="685" y="101" font-size="13">اقتباس وموضع</text></g>
+<g><rect x="610" y="42" width="150" height="76" rx="16" fill="#eef5fb" stroke="#8cadc9"/><text x="685" y="76">الدليل والمفهوم</text><text x="685" y="101" font-size="13">اقتباس وموضع</text></g>
 <g><rect x="390" y="42" width="170" height="76" rx="16" fill="#fff5df" stroke="#d4ac69"/><text x="475" y="76">الماستر والبوابات</text><text x="475" y="101" font-size="13">baseline ومراجعة</text></g>
 <g><rect x="30" y="42" width="310" height="76" rx="16" fill="#e7eef7" stroke="#8cadc9"/><text x="185" y="76">استرجاع معزول + جواب موثق</text><text x="185" y="101" font-size="13">أو امتناع عند نقص الدليل</text></g>
 </g><text x="500" y="163" text-anchor="middle" font-family="Tahoma,Arial" font-size="15" fill="#5c667a">snapshot_id وsnapshot_hash وروابط التغطية وسجل القرار تربط السلسلة كلها</text>
@@ -56,23 +56,22 @@
 <pre>&lt;WIKI_ROOT&gt;/
 ├── 00_CHARTER/       # العقود والسياسات وحدود النظام
 ├── 01_DATASETS/      # مصادر غير معدلة + snapshots وبصمات
-├── 02_CLAIMS/        # S_ وCLM_: ادعاءات، مواضع، اقتباسات، خلافات
-├── 03_CONCEPTS/      # C_: مفاهيم؛ G_: مسرد اختياري؛ X_: تقارير جانبية
-├── 04_MASTERS/       # بوابة النطاق، baseline، M0–M6، M_، روابط التغطية
-├── 05_EVAL/          # eval_set ونتائج الاختبارات والمقارنات
-├── 06_INDEXES/       # collections وفهارس الاسترجاع المشتقة
-└── 07_REPORTS/       # lint ومراجعة وحالة وتدقيق</pre>
+├── 02_CONCEPTS/      # C_: مفاهيم؛ X_: خلافات
+├── 03_MASTERS/       # بوابة النطاق، baseline، M0–M6، M_، روابط التغطية
+├── 04_EVAL/          # eval_set ونتائج الاختبارات والمقارنات
+├── 05_INDEXES/       # collections وفهارس الاسترجاع المشتقة
+└── 06_REPORTS/       # lint ومراجعة وحالة وتدقيق</pre>
 <div class="grid">
 <article class="card"><h3>1. الميثاق</h3><p>يحدد الصيغ والحالات والبوابات؛ يجعل القبول قاعدة قابلة للفحص.</p></article>
 <article class="card"><h3>2. المصادر</h3><p>الأصل محفوظ كما هو، مع dataset ولقطة وبصمة تمنع انزلاق المرجع.</p></article>
-<article class="card"><h3>3. الادعاءات</h3><p>وحدات دليل صغيرة تربط القول بموضعه؛ الخلاف علاقة معرفة لا نفاية.</p></article>
+<article class="card"><h3>3. سجل الأدلة</h3><p>سجل دليل داخل كل مفهوم يربط القول باقتباسه وموضعه وبصمته؛ الخلاف علاقة معرفة لا نفاية.</p></article>
 <article class="card"><h3>4. المفاهيم</h3><p>ثمانية عناوين H2 بعقد ثابت، والتعميق يمر بسبع خطوات وK0–K5.</p></article>
 <article class="card"><h3>5. الماسترز</h3><p>كتب قرار مرتبطة بنطاق وحاجة وتغطية ونسخة baseline واحدة.</p></article>
 <article class="card"><h3>6. التقييم</h3><p>أسئلة ثابتة وبسط ومقام وبصمات؛ لا نسب نجاح مستمدة من تشغيل لم يحدث.</p></article>
 <article class="card"><h3>7. الفهارس</h3><p>تمثيلات مشتقة قابلة لإعادة البناء، وليست بديلاً عن المصدر أو الدليل.</p></article>
-<article class="card"><h3>8. التقارير</h3><p>تسجل الفحوص والقيود والمراجعات؛ فحص metadata لا يبتلع G_ وX_ والتقارير.</p></article>
+<article class="card"><h3>8. التقارير</h3><p>تسجل الفحوص والقيود والمراجعات؛ فحص metadata لا يبتلع X_ والتقارير.</p></article>
 </div>
-<div class="note"><b>فاحص دقيق:</b> فحص metadata الخاص بكيانات الإجابة يقتصر على <code>S_*.md</code> و<code>CLM_*.md</code> و<code>C_*.md</code> و<code>M_*.md</code> في مساراتها. أما بطاقات المسرد والتقارير فليست كيانات إجابة مفهرسة بالعقد نفسه.</div>
+<div class="note"><b>فاحص دقيق:</b> فحص metadata الخاص بكيانات الإجابة يقتصر على <code>S_*.md</code> و<code>C_*.md</code> و<code>M_*.md</code> في مساراتها. أما التقارير فليست كيانات إجابة مفهرسة بالعقد نفسه.</div>
 </section>
 <section id="personas">
 <h2>الشخصيات والعزل</h2>
@@ -89,7 +88,7 @@
 <h2>السكيلز الخمسة: خط إنتاج واحد</h2>
 <div class="grid">
 <article class="card"><h3>1. wiki-structure</h3><p><b>553 سطراً.</b> التهيئة والعقود والفهارس وlint؛ يبني الهيكل الذي تمر عبره بقية المراحل.</p></article>
-<article class="card"><h3>2. wiki-concept-building</h3><p><b>722 سطراً.</b> الاستيعاب والقراءة وClaims والمفاهيم، مع المسرد الاختياري داخله لا كسكيل مستقل.</p></article>
+<article class="card"><h3>2. wiki-concept-building</h3><p><b>722 سطراً.</b> الاستيعاب والقراءة والمفاهيم وسجلات الأدلة.</p></article>
 <article class="card"><h3>3. wiki-concept-deepening</h3><p><b>667 سطراً.</b> الخطوات السبع وD05/D06 وK0–K5 والمراجعة المستقلة للمفهوم.</p></article>
 <article class="card"><h3>4. wiki-master-making</h3><p><b>813 سطراً.</b> بوابة النطاق وbaseline وM0–M6 و§1–§18 والتغطية والتقييم وبوابات الاعتماد.</p></article>
 <article class="card"><h3>5. wiki-asking</h3><p><b>792 سطراً.</b> العزل والاسترجاع والاستشهاد والامتناع والتقييم؛ آخر حلقة وأكثرها انضباطاً.</p></article>
@@ -102,10 +101,10 @@
 <div class="grid">
 <article class="card"><h3>1. الماستر كتاب قرار</h3><p><b>لماذا:</b> يوجه فعلاً ويغطي حاجة محددة، بدلاً من أن يكون ملخصاً موسوعياً عاماً.</p></article>
 <article class="card"><h3>2. المصدر لا يُعدّل</h3><p><b>لماذا:</b> الحفاظ على الأصل واللقطة والبصمة يجعل الاستشهاد قابلاً لإعادة الفحص.</p></article>
-<article class="card"><h3>3. الادعاء وحدة الدليل</h3><p><b>لماذا:</b> ربط كل قول بـlocator وquote/hash يكشف أساسه بدل الاكتفاء بثقة الصياغة.</p></article>
+<article class="card"><h3>3. سجل الأدلة وحدة الدليل</h3><p><b>لماذا:</b> ربط كل قول بـlocator وquote/hash يكشف أساسه بدل الاكتفاء بثقة الصياغة.</p></article>
 <article class="card"><h3>4. الخلاف يُحفظ</h3><p><b>لماذا:</b> لا حذف ولا quarantine للخلاف؛ إخفاؤه يصنع يقيناً زائفاً ويضيّع معرفة مهمة.</p></article>
 <article class="card"><h3>5. عقد المفهوم ثابت</h3><p><b>لماذا:</b> العناوين الثمانية المرتبة تجعل البناء والتعميق والفحص على بنية واحدة.</p></article>
-<article class="card"><h3>6. المسرد اختياري داخل البناء</h3><p><b>لماذا:</b> G_ خدمة للمفهوم، لا مرحلة إلزامية <code>G_ ← C_</code>؛ لذلك أُسقطت wiki-term-building.</p></article>
+<article class="card"><h3>6. سجل الأدلة داخل المفهوم</h3><p><b>لماذا:</b> الدليل اقتباس ومصدر وموضع وبصمة ونطاق وما لا يثبته، يعيش في ملف المفهوم؛ لا كيان دليل مستقل.</p></article>
 <article class="card"><h3>7. العمق لا يُشترى بالحجم</h3><p><b>لماذا:</b> الوظيفة والدليل والتغطية أصدق من حصص مثل 10,000 كلمة أو40% لقسم.</p></article>
 <article class="card"><h3>8. عزل persona إلزامي</h3><p><b>لماذا:</b> يمنع خلط الجماهير والمصادر والافتراضات، ويمنح التقييم والإجابة نطاقاً صادقاً.</p></article>
 <article class="card"><h3>9. لا fallback عام</h3><p><b>لماذا:</b> الامتناع عند غياب الدليل أفضل من استيراد جواب خارج persona أو من مقتطف ناقص.</p></article>
@@ -113,13 +112,13 @@
 <article class="card"><h3>11. التقييم على لقطة واحدة</h3><p><b>لماذا:</b> مقارنة baseline وM5 على snapshot نفسها تمنع نسبة الفرق إلى تغير البيانات.</p></article>
 <article class="card"><h3>12. baseline شرط لا زينة</h3><p><b>لماذا:</b> اكتماله ومطابقة البصمات وربطه بـM0 يمنعان قبول ماستر بلا مرجع مقارنة.</p></article>
 <article class="card"><h3>13. الاعتماد له بوابات</h3><p><b>لماذا:</b> §1–§18 وبوابة النطاق←baseline←M0 والتغطية والمراجعة المستقلة تفصل المسودة عن reviewed/canonical.</p></article>
-<article class="card"><h3>14. الادعاءات مقنّعة بحالتها</h3><p><b>لماذا:</b> OBSERVED وREPORTED وPROPOSED وUNKNOWN وNOT_RUN تمنع تحويل التصميم إلى نتائج مزعومة.</p></article>
+<article class="card"><h3>14. كل قول موسوم بحالته</h3><p><b>لماذا:</b> OBSERVED وREPORTED وPROPOSED وUNKNOWN وNOT_RUN تمنع تحويل التصميم إلى نتائج مزعومة.</p></article>
 </div>
 </section>
 <section id="inheritance">
 <h2>ما أُخذ من ويكي الماسترز</h2>
 <div class="grid">
-<article class="card"><h3>سلسلة الدليل</h3><p>من استخراج الادعاءات والمصادر إلى المفهوم والتعميق والماستر، مع إبقاء locator والاقتباس والبصمة في قلب السلسلة.</p></article>
+<article class="card"><h3>سلسلة الدليل</h3><p>من المصادر وسجلات الأدلة إلى المفهوم والتعميق والماستر، مع إبقاء locator والاقتباس والبصمة في قلب السلسلة.</p></article>
 <article class="card"><h3>التعميق المنهجي</h3><p>أُخذت عقود أقسام المفهوم، والخطوات السبع وD05/D06 وK0–K5، مع مراجعة مستقلة بدل المراجعة الذاتية فقط.</p></article>
 <article class="card"><h3>بوابة الماستر</h3><p>أُخذ بوابة النطاق وbaseline وM0–M6 و§1–§18 وربط التغطية والتقييم، ثم شدّد الفاحص ليطالب baseline مكتملاً ومتطابق اللقطة.</p></article>
 <article class="card"><h3>صياغة الحالات</h3><p>الأرقام المنقولة من الإرث REPORTED وليست benchmark جديداً، والغائب UNKNOWN أو NOT_RUN بدل تخمين نتيجته.</p></article>
@@ -129,8 +128,8 @@
 </section>
 <section id="excluded">
 <h2>ما استُبعد — وما الذي يمنعه؟</h2>
-<div class="two"><div class="card"><h3>سكيل مصطلحات مستقلة</h3><p>استُبعدت <b>wiki-term-building</b> لأنها تضيف مرحلة وهمية؛ بناء المفاهيم يتكفل بالمسرد عند الحاجة. القرار موثق في D25 وD39، والموجود خمس سكيلز فقط.</p></div><div class="card"><h3>أنظمة إرثية حاكمة</h3><p>لم تُتخذ V2 أوV3 أوC2 أنظمة حاكمة، ولا biz-media أساساً. الانتقاء يمنع وراثة تعارضات بنيوية كاملة من أجل منفعة موضعية.</p></div><div class="card"><h3>حصص ونسب بلا مقام</h3><p>رُفضت 10,000 كلمة و40% لقسم §4 ونسب تغطية غير معرفة. لا KPI صالحاً بلا سؤال قياس وبسط ومقام.</p></div><div class="card"><h3>اختصارات تضر الثقة</h3><p>لا fallback عام أوcross-persona، لا إجابة منsnippets، لا حذف أوquarantine للخلاف، ولا تعديل للمصادر الأصلية.</p></div></div>
-<div class="note warning"><b>ما لم يُحسم:</b> اكتمال قراءة قائمة المصادر الأصلية كلها UNKNOWN؛ روابط Claims/sources الإرثية UNKNOWN/PARTIAL؛ وأرقام الرقع والقوالب القديمة REPORTED/UNVERIFIED. لا تتحول هذه البنود إلى نجاحات بصياغة واثقة.</div>
+<div class="two"><div class="card"><h3>سكيل مصطلحات مستقلة</h3><p>استُبعدت <b>wiki-term-building</b> لأنها تضيف مرحلة وهمية؛ اسم المفهوم ومصطلحه يعيشان في ملف المفهوم نفسه. القرار موثق في D25 وD39، والموجود خمس سكيلز فقط.</p></div><div class="card"><h3>أنظمة إرثية حاكمة</h3><p>لم تُتخذ V2 أوV3 أوC2 أنظمة حاكمة، ولا biz-media أساساً. الانتقاء يمنع وراثة تعارضات بنيوية كاملة من أجل منفعة موضعية.</p></div><div class="card"><h3>حصص ونسب بلا مقام</h3><p>رُفضت 10,000 كلمة و40% لقسم §4 ونسب تغطية غير معرفة. لا KPI صالحاً بلا سؤال قياس وبسط ومقام.</p></div><div class="card"><h3>اختصارات تضر الثقة</h3><p>لا fallback عام أوcross-persona، لا إجابة منsnippets، لا حذف أوquarantine للخلاف، ولا تعديل للمصادر الأصلية.</p></div></div>
+<div class="note warning"><b>ما لم يُحسم:</b> اكتمال قراءة قائمة المصادر الأصلية كلها UNKNOWN؛ روابط sources الإرثية UNKNOWN/PARTIAL؛ وأرقام الرقع والقوالب القديمة REPORTED/UNVERIFIED. لا تتحول هذه البنود إلى نجاحات بصياغة واثقة.</div>
 </section>
 <section id="verification">
 <h2>ما تحقق فعلاً — وما بقي تشغيلاً لاحقاً</h2>

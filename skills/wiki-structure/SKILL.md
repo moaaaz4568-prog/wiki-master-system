@@ -93,11 +93,9 @@ operation: initialize|persona|lint|reindex-plan
     ├── 01_RAW/<source_domain>/part_0001/
     ├── 02_NORMALIZED/
     │   ├── sources/part_0001/
-    │   ├── claims/part_0001/
     │   └── coverage/part_0001/
     ├── 03_CONCEPTS/
     │   ├── pages/<domain>/part_0001/
-    │   ├── glossary/<domain>/part_0001/
     │   └── conflicts/part_0001/
     ├── 04_MASTERS/<domain>/
     ├── 05_WIKI/maps/
@@ -116,7 +114,7 @@ operation: initialize|persona|lint|reindex-plan
         └── handoffs/
 ```
 
-لا تنشئ `M_` ولا `C_` أثناء التهيئة. الهيكل ليس محتوى. مجلد glossary يمكن تأجيله حتى أول مصطلح فعلي.
+لا تنشئ `M_` ولا `C_` أثناء التهيئة. الهيكل ليس محتوى. اسم المفهوم ومصطلحه يعيشان في ملف المفهوم نفسه؛ لا بطاقات مصطلحات منفصلة.
 
 ### 4.2 لماذا المفاهيم ليست داخل مجلد الماستر
 
@@ -140,9 +138,7 @@ test "$count" -le 1000
 |---|---|---|
 | أصل خام | `R_<source_id>.<ext>` | لا تغيير للمحتوى |
 | normalized source | `S_<source_id>.md` | مرتبط بالأصل والبصمة |
-| Claim مستقل | `CLM_<claim_id>.md` | للمشاركة أو الخلاف أو التعقيد |
 | مفهوم | `C_<SOURCE_CODE>_NN.md` | فكرة واحدة، NN من 01 |
-| مسرد | `G_<concept_slug>.md` | اختياري |
 | خلاف | `X_<conflict_id>.md` | يحفظ الطرفين |
 | ماستر | `M_<master_id>.md` | بعد بوابة النطاق وM0 فقط |
 | قراءة | `READ_<source_id>.json` | تغطية segments |
@@ -179,7 +175,7 @@ test "$count" -le 1000
 |---|---|
 | Concept/Master `status` | `draft`, `reviewed`, `canonical`, `deprecated` |
 | Concept `stage` | `extracted`, `deepening`, `deepened` |
-| Claim `status` | `candidate`, `reviewed`, `blocked`, `stale` |
+| سجل الأدلة `status` | `candidate`, `reviewed`, `blocked`, `stale` |
 | Gate `status` | `not_started`, `in_progress`, `pass`, `blocked`, `stale` |
 | Ingest `disposition` | `new`, `update`, `disputed`, `no_material` |
 | Confidence | `source_reported`, `supported`, `inferred`, `hypothetical`, `disputed` |
@@ -228,7 +224,7 @@ updated: YYYY-MM-DD
 
 ### 7.2 metadata إلزامية على كل مشتق
 
-`persona_id` إلزامي في Source وClaim وConcept وMaster وX. أي ملف بلا قيمة لا يدخل فهرساً معتمداً. لا تعالج النقص بوضع قيمة `unknown` ثم السماح له؛ اجعله finding يمنع الفهرسة.
+`persona_id` إلزامي في Source وConcept وMaster وX. أي ملف بلا قيمة لا يدخل فهرساً معتمداً. لا تعالج النقص بوضع قيمة `unknown` ثم السماح له؛ اجعله finding يمنع الفهرسة.
 
 كل ملف يُفهرس بqmd يحمل أيضاً الكتلة namespaced التي يقرأها qmd فعلاً. الحقول العلوية تبقى عقد النظام، و`qmd.metadata` مرآة فهرسة typed لا مصدر حقيقة مستقلاً:
 
@@ -240,7 +236,7 @@ qmd:
     status: draft
 ```
 
-طابق `persona_id` و`type` في المرآة مع العقد. وطابق `status` أيضاً في Claim وConcept وMaster؛ Source بلا حالة علوية يحمل `type` و`persona_id` على الأقل. عند تغير الحالة حدث الحقلين في العملية نفسها، واجعل اختلافهما أو غياب المرآة finding يمنع الفهرسة. لا يكفي وضع `persona_id` العلوي ثم افتراض أن `--filter` يراه.
+طابق `persona_id` و`type` في المرآة مع العقد. وطابق `status` أيضاً في Concept وMaster؛ Source بلا حالة علوية يحمل `type` و`persona_id` على الأقل. عند تغير الحالة حدث الحقلين في العملية نفسها، واجعل اختلافهما أو غياب المرآة finding يمنع الفهرسة. لا يكفي وضع `persona_id` العلوي ثم افتراض أن `--filter` يراه.
 
 ### 7.3 الخصوصية
 
@@ -253,7 +249,6 @@ qmd:
 ```text
 <persona_id>-masters
 <persona_id>-concepts
-<persona_id>-claims
 <persona_id>-sources
 ```
 
@@ -300,7 +295,7 @@ Append-only:
 |---|---|---|
 | R | هوية المصدر ونسخته وقراءته | الاستخراج المعتمد |
 | بوابة النطاق (T) | `scope_concepts_complete` على snapshot | إنشاء M_ |
-| C | Claims والاقتباسات والمواضع | المفهوم reviewed |
+| C | سجلات الأدلة والاقتباسات والمواضع | المفهوم reviewed |
 | K0–K5 | العمق والفصل والقارئ والحالة | تعميق معتمد |
 | M0–M6 | الحاجة والكتاب والاسترجاع والقرار | reviewed/canonical |
 | Q | استشهاد وامتناع وتعارض | جودة الإجابة |
